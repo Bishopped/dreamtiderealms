@@ -1,0 +1,739 @@
+/* FONT IMPORTS */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Fontdiner+Swanky&family=Lora:ital,wght@0,400..700;1,400..700&family=Pirata+One&family=Quicksand:wght@300..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Spectral+SC:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --HB_Color_Background: #EDE3DA;         /* Vellum Beige – general page tone */
+  --HB_Color_Accent: #A993D3;             /* Lucid Lilac – UI highlights, subtle shadows */
+  --HB_Color_HeaderUnderline: #3A6A6C;    /* Obscura Teal – elegant, grounding underline */
+  --HB_Color_HorizontalRule: #512F4E;     /* Inkblot Plum – strong dream divider */
+  --HB_Color_HeaderText: #1B1F3B;         /* Midnight Bloom – titles and section heads */
+  --HB_Color_MonsterStatBackground: #F2F1F5; /* Dream Mist – pale stat block background */
+  --HB_Color_CaptionText: #3A6A6C;        /* Obscura Teal – captions and secondary info */
+  --HB_Color_WatercolorStain: #D4D5DB;    /* Chimeric Silver – dreamy overlays/washes */
+  --HB_Color_Footnotes: #E1867B;          /* Chimeric Coral – warm, standout notes */
+  --HB_Color_HorizontalRule: #512F4E;
+  --TOC: 'include';
+}
+
+.page::after {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    z-index: 100;
+    width: 100%;
+    height: 50px;
+    content: '';
+    background-image: url(/assets/PHB_footerAccent.png);
+    background-size: cover;
+}
+.page:not(:has(.skipCounting)) {
+    counter-increment: page-numbers;
+}
+.page {
+    column-count: 2;
+    column-fill: auto;
+    column-gap: .9cm;
+    column-width: 8cm;
+    font-family: 'BookInsanityRemake';
+    font-size: .34cm;
+    position: relative;
+    z-index: 15;
+    box-sizing: border-box;
+    width: 215.9mm;
+    height: 279.4mm;
+    padding: 1.4cm 1.9cm 1.7cm;
+    overflow: hidden;
+    background-color: var(--HB_Color_Background);
+    background-image: url(https://i.imgur.com/2b27QlC.jpeg);
+    text-rendering: optimizeLegibility;
+    contain: strict;
+    content-visibility: auto;
+    contain-intrinsic-size: auto none;
+}
+.page h1 + p::first-letter {
+  all: unset; /* This removes ALL inherited drop cap styles */
+}
+{
+    box-sizing: border-box;
+}
+:where(html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,button,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video) {
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(odd) {
+  background-color: 	rgba(169, 147, 211, 0.5) !important; /* Vellum Tint */
+}
+
+table tr:nth-child(even) {
+  background-color: #F2F1F5; /* Dream Mist */
+}
+
+/* FOOTER */
+.page::after {
+		position         : absolute;
+		bottom           : 0px;
+		left             : 0px;
+		z-index          : 100;
+		width            : 100%;
+		height           : 50px;
+		content          : '';
+		background-image : url(https://i.imgur.com/z2DCCLG.png);
+    opacity          : 0.8;
+		background-size  : cover;
+	}
+	&:nth-child(even) {
+		&::after { transform : scaleX(-1); }
+		.pageNumber { left : 2px; }
+		.footnote {
+			left       : 80px;
+			text-align : left;
+		}
+	}
+	.pageNumber {
+		right       : 2px;
+		bottom      : 22px;
+		color       : #3A6A6C !important;
+    font-family: 'Spectral SC';
+	}
+	.footnote {
+		position   : absolute;
+		right      : 80px;
+		bottom     : 32px;
+		z-index    : 150;
+		width      : 200px;
+		font-size  : 0.8em;
+    font-weight: bold;
+		color      : var(--HB_Color_Footnotes);
+		text-align : right;
+	}
+
+/* HEADER FONTS */
+
+/* Base body font for paragraphs */
+body, p {
+  font-family: 'Lora', serif;
+  color: #1B1F3B; /* Midnight Bloom for readability */
+}
+
+/* Main header – dreamy, bold, elegant */
+h1 {
+  font-family: 'Spectral SC', serif !important;
+  font-weight: 700;
+  color: #512F4E; /* Inkblot Plum */
+}
+.dropcap {
+  float: left;
+  font-size: 5em;
+  line-height: 0.9;
+  font-weight: bol;
+  font-family: 'Fontdiner Swanky', serif;
+  color: #512F4E;
+  padding-right: 0.15em;
+}
+/* Subsection header – formal and clean */
+h2 {
+  font-family: 'Unna', serif !important;
+  font-weight: 700;
+  color: #3A6A6C; /* Obscura Teal */
+}
+
+/* Tertiary headers – still structured, slightly looser */
+h3 {
+  font-family: 'Unna', serif !important;
+  font-weight: 700;
+  font-style: italic;
+  color: #3A6A6C;
+}
+
+/* Informational / callout headers */
+h4 {
+  font-family: 'Quicksand', sans-serif !important;
+  font-weight: 600;
+  color: #E1867B; /* Chimeric Coral */
+}
+
+/* Lore blocks or decorative headers */
+h5 {
+  font-family: 'Spectral SC', serif !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #A993D3; /* Lucid Lilac */
+}
+
+/* Mini-labels or footnotes */
+h6 {
+  font-family: 'Quicksand', sans-serif !important;
+  font-size: 0.85em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #3A6A6C;
+}
+
+/* TABLE FONTS */
+table {
+  font-family: 'Roboto Mono', monospace !important;
+  font-size: 0.95em;
+  color: #1B1F3B; /* Midnight Bloom */
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+
+table th {
+  font-family: 'Unna', serif !important;
+  font-weight: 700;
+  background-color: #D4D5DB; /* Chimeric Silver */
+  color: #1B1F3B;
+  padding: 0.5em;
+  border-bottom: 2px solid #3A6A6C; /* Obscura Teal */
+}
+
+table td {
+  padding: 0.5em;
+  border-bottom: 1px solid #A993D3; /* Lucid Lilac */
+}
+
+/* For side notes or tags in table cells */
+.table-tag {
+  font-family: 'Quicksand' !important, sans-serif;
+  font-size: 0.85em;
+  color: #E1867B; /* Chimeric Coral */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* MONSTER FRAMES */
+.page .monster.frame {
+    width: calc(100% + .32cm);
+    padding: 4px 2px;
+    margin-right: -0.16cm;
+    margin-left: -0.16cm;
+    background-color: var(--HB_Color_MonsterStatBackground);
+    background-image: url(/assets/parchmentBackgroundGrayscale.jpg);
+    background-blend-mode: overlay;
+    border-style: solid;
+    border-width: 7px 6px;
+    border-image: url(https://i.imgur.com/Zv7xEl6.png) 14 round;
+    border-image-outset: 0px 2px;
+    box-shadow: 1px 4px 14px #888888;
+}
+.block.monster hr {
+  border: none;
+  height: 13.5px; /* Adjust to fit image height */
+  background: url(https://i.imgur.com/hH9jidy.png) no-repeat center center;
+  background-size: contain; /* Or 'cover' or fixed px width */
+  margin: 1em 0;
+}
+
+/* ============================
+   DREAMTIDE: QUOTE BLOCK
+============================ */
+.quote > p {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  color: #1B1F3B; /* Midnight Bloom */
+  line-height: 0.54cm;
+}
+
+.quote > p:first-child::first-line {
+  font-family: 'Spectral SC', serif;
+  font-size: 0.38cm;
+  font-style: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.03em;
+}
+
+.quote .attribution {
+  font-family: 'Quicksand', sans-serif;
+  font-style: normal;
+  text-align: right;
+  color: #3A6A6C; /* Obscura Teal */
+  line-height: 0.54cm;
+}
+.quote .attribution::before {
+  content: '—';
+  margin-right: 0.2em;
+  color: #A993D3; /* Lucid Lilac */
+}
+.quote + * {
+  margin-top: 0.54cm;
+}
+
+/* ============================
+   DREAMTIDE: NOTE BLOCK
+============================ */
+.note {
+  font-family: 'Quicksand', sans-serif;
+  padding: 0.13cm 0.16cm;
+  background-color: #A993D3; /* Lucid Lilac */
+  color: #1B1F3B; /* Midnight Bloom */
+  border: 1px solid #3A6A6C; /* Obscura Teal */
+  box-shadow: 1px 4px 14px rgba(58, 106, 108, 0.4);
+}
+.page .note {
+  margin-top: 9px;
+}
+.note + * {
+  margin-top: 0.45cm;
+}
+.note h5 {
+  font-size: 0.375cm;
+  font-family: 'Unna', serif;
+}
+.note p {
+  padding-bottom: 0px;
+}
+.note :last-child {
+  margin-bottom: 0;
+}
+
+/* ============================
+   DREAMTIDE: DESCRIPTIVE BOX
+============================ */
+.descriptive {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #D4D5DB; /* Chimeric Silver */
+  color: #1B1F3B;
+  padding: 0.1em;
+  border: 2px solid #3A6A6C;
+  box-shadow: 0 0 6px rgba(169, 147, 211, 0.3);
+}
+.page .descriptive {
+  margin-top: 4px;
+}
+.descriptive + * {
+  margin-top: 0.45cm;
+}
+.descriptive h5 {
+  font-size: 0.375cm;
+  font-family: 'Unna', serif;
+}
+.descriptive p {
+  line-height: 1.5em;
+  padding-bottom: 0px;
+}
+.descriptive :last-child {
+  margin-bottom: 0;
+}
+/* ================================
+   DREAMTIDE: Artist Credit
+================================ */
+.artist {
+  position: absolute;
+  width: auto;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.27cm;
+  color: #3A6A6C; /* Obscura Teal (CaptionText) */
+  text-align: center;
+}
+
+.artist p, .artist p + p {
+  margin: unset;
+  line-height: 1em;
+  text-indent: unset;
+}
+
+.artist h5 {
+  font-family: 'Unna', serif;
+  font-size: 1.3em;
+  letter-spacing: 0.02em;
+  color: #1B1F3B; /* Midnight Bloom */
+}
+
+.artist a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.artist a:hover {
+  text-decoration: underline;
+  color: #A993D3; /* Lucid Lilac */
+}
+
+/* ================================
+   DREAMTIDE: Watermark
+================================ */
+.watermark {
+  font-family: 'Spectral SC', serif;
+  font-size: 0.34cm;
+  color: rgba(27, 31, 59, 0.1); /* Faint Midnight Bloom */
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ================================
+   DREAMTIDE: Watercolor Overlay Utility
+   (if using these for spot effects or tints)
+================================ */
+.watercolor1 {
+  background-color: #EDE3DA; /* Vellum Beige */
+  mix-blend-mode: multiply;
+  opacity: .05;
+}
+
+.watercolor2 {
+  background-color: #D4D5DB; /* Chimeric Silver */
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.watercolor3 {
+  background-color: #A993D3; /* Lucid Lilac */
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.watercolor4 {
+  background-color: #3A6A6C; /* Obscura Teal */
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.watercolor5 {
+  background-color: #E1867B; /* Chimeric Coral */
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.watercolor6 {
+  background-color: #512F4E; /* Inkblot Plum */
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.watercolor7 {
+  background-color: rgba(244, 201, 93, 0.3); /* Starfire Gold */
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.watercolor8 {
+  background-color: rgba(58, 106, 108, 0.15);
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.watercolor9 {
+  background-color: rgba(169, 147, 211, 0.15);
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.watercolor10 {
+  background-color: rgba(27, 31, 59, 0.05); /* Dreamshadow Mist */
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.watercolor11 {
+  background-color: rgba(237, 227, 218, 0.3);
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.watercolor12 {
+  background-color: rgba(81, 47, 78, 0.2); /* Plum Haze */
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+// *****************************
+// *       CLASS TABLE
+// *****************************/
+.page .classTable {
+
+}
+.page .classTable.frame {
+  border-image-source: url(https://i.imgur.com/70M2mKG.png) !important;
+}
+.page .classTable.decoration::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    content: '';
+    background-image: url(https://i.imgur.com/nBaIn3Q.png), url(https://i.imgur.com/nBaIn3Q.png);
+    opacity: 0.7;
+    filter: drop-shadow(0 0 1px #C8C5C080);
+    background-repeat: no-repeat, no-repeat;
+    background-size: contain, contain;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+/*FRONT COVER*/
+.page .frontcover {
+	column-span         : all;
+	-webkit-column-span : all;
+	-moz-column-span    : all;
+	display             : block;
+	margin-left					: 2.77%;
+  margin-top          : 50px !important;
+}
+.page:has(.frontCover) {
+    columns    : 1;
+    text-align : center;
+}
+
+.page:has(.frontCover)::after {
+    display: none;
+}
+
+.page:has(.frontCover) .frontCover {
+    position: absolute;
+}
+
+.page:has(.frontCover) h1 {
+    margin-top          : 1.55cm;
+    margin-bottom       : 0;
+    font-family         : 'Pirata One' !important;
+    font-size           : 70pt;
+    font-weight         : normal;
+    line-height         : 1.9cm;
+    color               : #1b1f3b;
+    text-transform      : uppercase;
+    text-shadow         : unset;
+    -webkit-text-stroke : 15px #a993d3;
+    paint-order         : stroke;
+}
+.page:has(.frontCover) h2 {
+    margin-top          : 1.cm;
+    margin-bottom       : 0;
+    font-family         : 'Pirata One' !important;
+    font-size           : 20pt;
+    font-weight         : normal;
+    line-height         : 1.9cm;
+    color               : #1b1f3b;
+    text-transform      : uppercase;
+    text-shadow         : unset;
+    -webkit-text-stroke : 5px #a993d3;
+    paint-order         : stroke;
+}
+
+.page:has(.frontCover) .banner {
+    position: absolute;
+    bottom: 4.2cm;
+    left: 0;
+    display: flex
+;
+    flex-direction: column;
+    justify-content: center;
+    width: 10.5cm;
+    height: 1.7cm;
+    padding-top: .1cm;
+    padding-left: .5cm;
+    font-family: 'Pirata One';
+    font-size: 25pt;
+    font-weight: normal;
+    color: white;
+    text-align: left;
+    letter-spacing: .014cm;
+    background-image: url(https://i.imgur.com/db383Hr.png);
+    filter: drop-shadow(2px 2px 2px black);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+  }
+.page:has(.frontCover) hr {
+  border: none;
+  height: 25px; /* Adjust to fit image height */
+  background: url(https://i.imgur.com/hH9jidy.png) no-repeat center center;
+  background-size: contain; /* Or 'cover' or fixed px width */
+  margin: em 0;
+}
+.page:has(.insideCover) h1 {
+    margin-top          : 1.55cm;
+    margin-bottom       : 0;
+    font-family         : 'Pirata One' !important;
+    font-size           : 70pt;
+    font-weight         : normal;
+    line-height         : 1.9cm;
+    color               : #1b1f3b;
+    text-transform      : uppercase;
+    text-shadow         : unset;
+    -webkit-text-stroke : 5px #a993d3;
+    paint-order         : stroke;
+}
+.page:has(.insideCover) h2 {
+    margin-top          : 1.cm;
+    margin-bottom       : 0;
+    font-family         : 'Pirata One' !important;
+    font-size           : 20pt;
+    font-weight         : normal;
+    line-height         : 1.9cm;
+    color               : #1b1f3b;
+    text-transform      : uppercase;
+    text-shadow         : unset;
+    -webkit-text-stroke : 2.5px #a993d3;
+    paint-order         : stroke;
+}
+.page:has(.insideCover) hr {
+  border: none;
+  height: 13.5px; /* Adjust to fit image height */
+  background: url(https://i.imgur.com/hH9jidy.png) no-repeat center center;
+  background-size: contain; /* Or 'cover' or fixed px width */
+  margin: em 0;
+}
+
+/* PART COVER */
+.page:has(.partCover) .partCover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6cm;
+    background-image: url(https://i.imgur.com/Lb7cQSw.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.page:has(.partCover) h1 {
+    margin-top          : 1.55cm;
+    margin-bottom       : 0;
+    font-family         : 'Pirata One';
+    font-size           : 70pt;
+    font-weight         : normal;
+    line-height         : 1.9cm;
+    color               : #1b1f3b;
+    text-transform      : uppercase;
+    text-shadow         : unset;
+    -webkit-text-stroke : 5px #a993d3;
+    paint-order         : stroke;
+}
+.page:has(.partCover) h2 {
+    margin-top          : 1.cm;
+    margin-bottom       : 0;
+    font-family         : 'Pirata One';
+    font-size           : 20pt;
+    font-weight         : normal;
+    line-height         : 1.9cm;
+    color               : #1b1f3b;
+    text-transform      : uppercase;
+    text-shadow         : unset;
+    -webkit-text-stroke : 2.5px #a993d3;
+    paint-order         : stroke;
+}
+
+/*BACK COVER*/
+/* BACK COVER */
+ .page:has(.backCover) {
+    padding-bottom  : 50px;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : flex-end;
+    
+    .backCover {
+      width               : 100%;
+      background-image    : url('https://i.imgur.com/2meGzjO.png');
+      background-size     : contain;
+      background-position : 0 max(var(--height), 70px);
+      padding             : 20px;
+      width               : 100%;
+      color               : white;
+    }
+
+    h1 {
+      left                : 0;
+      right               : 0;
+      width               : 700px;
+      margin              : 70px auto;
+      font-weight         : 100;
+      font-size           : 1.65cm;
+      font-family         : 'Pirata One' !important;
+      -webkit-text-stroke : 1.5mm black;
+      paint-order         : stroke;
+      color               : white;
+    }
+    
+    a {
+      color     : white;
+    
+    }
+
+    img {
+      height    : calc(var(--height) + 110px);
+      min-width : 100%;
+      width     : auto;
+      position  : absolute;
+      left      : 0;
+      top       : 0;
+    }
+
+    p {
+      font-family   : 'BookInsanityRemake';
+      font-size     : mm;
+      line-height   : 4.4mm;
+      width         : 464px;
+      color         : white;
+
+      + p {
+        text-indent : 0;
+        padding-top : 16px;
+      }
+    }
+
+    caps {
+      -webkit-text-stroke : 0.1mm white;
+    }
+    
+    .banner {
+      --color       : #555557;
+      padding       : 3mm 0.16cm;
+      padding-left  : 13mm;
+      margin-top    : 8mm;
+      margin-left   : -13mm;
+      background    : linear-gradient(to right, var(--color) 0%, var(--color) 90%, rgba(0, 0, 0, 0) 100%);
+      width         : 490px;
+      p {
+        width       : 390px;
+      }
+    }
+    
+    .logo {
+      bottom    : max(calc((1156px - var(--height))/2), 2.5cm);
+      left      : unset;
+      right     : 0mm;
+      
+      img {
+			  height    : 2.3cm;
+        min-width : unset;
+        width     : 2.3cm;
+      }
+
+      hr {
+        margin-top    : 6px;
+        + * {
+          margin-top  : 20px;
+        }
+      }
+      
+      a {
+        color         : #68686a;
+      }
+
+      p {
+        font-family   : 'BookInsanityRemake';
+        font-variant  : small-caps;
+        line-height   : 1em;
+        
+        color         : #d69d00;
+        
+        /* The following lines of code restore the "golden" texture for text; delete this line of code (line 1045) as well as line 1050
+        color                   : rgba(0,0,0);
+			  background-image        : linear-gradient(-45deg, #c9a02c, #f9bf24, #815003, #dfa311);
+        -webkit-background-clip : text;
+        background-clip         : text;
+        */
+      }
+      
+      p:nth-letter(2) { 
+        color : red; 
+      }
+    }
+  }

@@ -1,0 +1,26 @@
+
+{
+  "_meta": {
+    "sources": [
+      {
+        "json": "DreamtideRealms",
+        "full": "Dreamtide Realms",
+        "abbreviation": "DR",
+        "color": "6d4ba1",
+        "authors": [
+          "Harlan Louis"
+        ],
+        "convertedBy": [
+          "Harlan Louis"
+        ],
+        "dateReleased": "2025-05-23",
+        "version": "1.0",
+        "url": "https://dreamtiderealms.super.site/"
+      }
+    ],
+    "edition": "classic",
+    "status": "ready",
+    "dateAdded": 1747939200,
+    "dateLastModified": 1747939200
+  }
+}
